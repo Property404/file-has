@@ -5,17 +5,17 @@ OBJ_DIR = ./build
 
 INSTALL_DIR = ~/.local/bin
 INSTALL_COMMAND = install
-EXECUTABLE_NAME = fiha
+EXECUTABLE_NAME = file-has
 
 # Compiler flags
-CFLAGS = -Wall -Wextra
+CXXFLAGS = -Wall -Wextra -std=c++20 -fmax-errors=4
 OBJECTS = $(addprefix $(OBJ_DIR)/,binary.o main.o )
 
 # Build recipe
 $(EXECUTABLE_NAME): $(OBJ_DIR) $(OBJECTS)
-	$(CC) -o $(EXECUTABLE_NAME) $(OBJECTS) $(CFLAGS)
-$(OBJECTS): $(OBJ_DIR)%.o : $(SRC_DIR)%.c
-	cc -c -o $@ $^ $(CFLAGS)
+	$(CXX) -o $(EXECUTABLE_NAME) $(OBJECTS) $(CXXFLAGS)
+$(OBJECTS): $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
+	$(CXX) -c -o $@ $^ $(CXXFLAGS)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 install: $(EXECUTABLE_NAME)

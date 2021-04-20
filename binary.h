@@ -1,12 +1,32 @@
 #pragma once
-#include <stdint.h>
-#include <stdlib.h>
+#include <cstdint>
+#include <cstdlib>
+#include <optional>
 
-typedef struct {
+// Represents a binary file
+class Binary {
+	private:
+    uint8_t* _map;
+    size_t _size;
     int _fd;
-    uint8_t* map;
-    size_t size;
-} Binary;
 
-void construct_binary(Binary* self, const char* path);
-void destroy_binary(Binary* self);
+	public: 
+	Binary(const char* path);
+
+	Binary(Binary&& rhs) = delete;
+	Binary& operator=(Binary&& rhs) = delete;
+	Binary(const Binary&) = delete;
+	Binary& operator=(const Binary&) = delete;
+
+	// Look for smaller binary in self Returns nothing if not found, otherwise
+	// returns the exact location
+	std::optional<size_t> find(const Binary& binary) const;
+
+	// Getters
+	size_t size() const noexcept  { return _size; }
+
+	// Access bytes by indexing
+	uint8_t operator[](size_t idx) const;
+
+	~Binary();
+};
