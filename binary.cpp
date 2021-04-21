@@ -52,7 +52,7 @@ std::optional<size_t> Binary::find(const Binary& small) const {
             
             // Hooray!
             if(j == small.size() - 1) {
-                return j;
+                return i;
             }
         }
     }
