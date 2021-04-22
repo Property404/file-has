@@ -18,7 +18,7 @@ int main(int argc, const char** argv) {
         return 1;
     } else {
 		const auto val = location.value();
-		std::cerr << std::hex <<
+		std::cout << std::hex <<
 			"Found @ 0x" << val << " - "
 			<< "0x" << val+small.size() << std::endl;
         return 0;
