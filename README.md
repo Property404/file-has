@@ -1,8 +1,6 @@
 # File-Has
 
-Work in progress.
-
-Utility to determine if one binary file contains another.
+Simple utility to determine if one binary file contains another.
 
 ## Usage  
 

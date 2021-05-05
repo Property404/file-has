@@ -1,6 +1,17 @@
 *
-!*.cpp
-!*.h
-!Makefile
+!**/
+/target
 !.gitignore
+
+# Source
+!*.rs
 !*.md
+!Cargo.toml
+!Cargo.lock
+
+# CI
+!.github/**/*.yml
+
+# Binaries created for test vectors
+!samples/*
+
